@@ -120,7 +120,7 @@ img.emoji{height:1.15em;width:1.15em;vertical-align:-0.2em;}
 .row{display:flex; justify-content:center;}
 
 /* =======================
-   FULL-BODY BEARS PEEKING
+   BEARS LAYER
    ======================= */
 .peekers{
   position:fixed;
@@ -129,7 +129,6 @@ img.emoji{height:1.15em;width:1.15em;vertical-align:-0.2em;}
   z-index:1;
 }
 
-/* صندوق الدب */
 .peeker{
   position:absolute;
   width: 300px;
@@ -141,7 +140,6 @@ img.emoji{height:1.15em;width:1.15em;vertical-align:-0.2em;}
   transform-origin:center;
 }
 
-/* الدب داخل الصندوق */
 .bear{
   position:absolute;
   width: 145%;
@@ -151,14 +149,10 @@ img.emoji{height:1.15em;width:1.15em;vertical-align:-0.2em;}
   transform: translate(-50%,-50%);
 }
 
-.peeker--a .bear{
-  transform: translate(-58%,-54%) rotate(-10deg) scale(1.03);
-}
-.peeker--b .bear{
-  transform: translate(-42%,-50%) rotate(10deg) scale(1.03);
-}
+.peeker--a .bear{ transform: translate(-58%,-54%) rotate(-10deg) scale(1.03); }
+.peeker--b .bear{ transform: translate(-42%,-50%) rotate(10deg) scale(1.03); }
 
-/* الزوايا */
+/* Desktop/Tablet positions */
 .peeker--tl{ top:-36px; left:-36px; }
 .peeker--tr{ top:-36px; right:-36px; }
 .peeker--bl{ bottom:-36px; left:-36px; }
@@ -169,111 +163,36 @@ img.emoji{height:1.15em;width:1.15em;vertical-align:-0.2em;}
 .peeker--bl.peeker--b{ left: 172px; bottom:-36px; }
 .peeker--br.peeker--b{ right:172px; bottom:-36px; }
 
-/* الحواف */
-.peeker--left{
-  left:-85px;
-  top:50%;
-  transform:translateY(-50%);
-  --ty:-50%;
-}
-.peeker--right{
-  right:-85px;
-  top:50%;
-  transform:translateY(-50%);
-  --ty:-50%;
-}
-
-.peeker--top{
-  top:-92px;
-  left:50%;
-  transform:translateX(-50%);
-  --tx:-50%;
-}
-.peeker--bottom{
-  bottom:-92px;
-  left:50%;
-  transform:translateX(-50%);
-  --tx:-50%;
-}
+.peeker--left{ left:-85px; top:50%; transform:translateY(-50%); }
+.peeker--right{ right:-85px; top:50%; transform:translateY(-50%); }
+.peeker--top{ top:-92px; left:50%; transform:translateX(-50%); }
+.peeker--bottom{ bottom:-92px; left:50%; transform:translateX(-50%); }
 
 .peeker--left .bear{ left: 54%; top: 62%; }
 .peeker--right .bear{ left: 46%; top: 62%; }
 .peeker--top .bear{ top: 70%; }
 .peeker--bottom .bear{ top: 56%; }
 
-/* اهتزاز */
+/* Shake */
 .peeker.shake{ animation: peekShake .32s linear 1; }
 @keyframes peekShake{
-  0%{ transform: translate(var(--tx,0), var(--ty,0)); }
-  25%{ transform: translate(var(--tx,0), var(--ty,0)) translateX(10px) rotate(1deg); }
-  50%{ transform: translate(var(--tx,0), var(--ty,0)) translateX(-10px) rotate(-1deg); }
-  75%{ transform: translate(var(--tx,0), var(--ty,0)) translateX(10px) rotate(1deg); }
-  100%{ transform: translate(var(--tx,0), var(--ty,0)); }
+  0%{ transform: none; }
+  25%{ transform: translateX(10px) rotate(1deg); }
+  50%{ transform: translateX(-10px) rotate(-1deg); }
+  75%{ transform: translateX(10px) rotate(1deg); }
+  100%{ transform: none; }
 }
 
-/* رقص صفحة YES */
+/* Dance on YES */
 .peeker.dance{ animation: dance 1.05s ease-in-out infinite; }
 @keyframes dance{
-  0%,100%{ transform: translate(var(--tx,0), var(--ty,0)) translateY(0) rotate(0deg) }
-  25%{ transform: translate(var(--tx,0), var(--ty,0)) translateY(-10px) rotate(-2deg) }
-  50%{ transform: translate(var(--tx,0), var(--ty,0)) translateY(0) rotate(2deg) }
-  75%{ transform: translate(var(--tx,0), var(--ty,0)) translateY(-8px) rotate(-1deg) }
+  0%,100%{ transform: translateY(0) rotate(0deg) }
+  25%{ transform: translateY(-10px) rotate(-2deg) }
+  50%{ transform: translateY(0) rotate(2deg) }
+  75%{ transform: translateY(-8px) rotate(-1deg) }
 }
 
-/* فقاعات الكلام */
-.bubble{
-  position:absolute;
-  left: 52%;
-  top: 60%;
-  transform: translate(-50%,-50%);
-  background: rgba(255,255,255,.92);
-  border: 1px solid rgba(0,0,0,.08);
-  color: rgba(20,20,24,.92);
-  padding: 10px 12px;
-  border-radius: 16px;
-  font-weight: 800;
-  font-size: 13px;
-  white-space: nowrap;
-  box-shadow: 0 14px 30px rgba(0,0,0,.16);
-  opacity: 0;
-  animation: bubbleUp 3.2s ease-out forwards;
-}
-.bubble::after{
-  content:"";
-  position:absolute;
-  bottom:-6px;
-  left: 50%;
-  width: 12px; height: 12px;
-  background: rgba(255,255,255,.92);
-  border-left: 1px solid rgba(0,0,0,.08);
-  border-bottom: 1px solid rgba(0,0,0,.08);
-  transform: translateX(-50%) rotate(45deg);
-}
-@keyframes bubbleUp{
-  0%{ opacity:0; transform: translate(-50%,-35%) scale(.97) }
-  15%{ opacity:1 }
-  85%{ opacity:1; transform: translate(-50%,-112%) scale(1.02) }
-  100%{ opacity:0; transform: translate(-50%,-138%) scale(1.03) }
-}
-
-/* قلوب صفحة YES */
-.heart{
-  position: fixed;
-  bottom: -24px;
-  left: var(--lx);
-  font-size: var(--fs);
-  opacity: .96;
-  animation: floatUp var(--dur) linear forwards;
-  pointer-events:none;
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,.14));
-}
-@keyframes floatUp{
-  0%{ transform: translateY(0) rotate(0deg); opacity:0 }
-  10%{ opacity:1 }
-  100%{ transform: translateY(-115vh) rotate(18deg); opacity:0 }
-}
-
-/* دبكة YES */
+/* Dabke */
 .dabke-wrap{
   margin-top: 16px;
   display:flex;
@@ -294,26 +213,47 @@ img.emoji{height:1.15em;width:1.15em;vertical-align:-0.2em;}
 .dabke-bear:nth-child(5){ animation-delay: 0s; }
 
 @keyframes dabke{
-  0%   { transform: translateY(0) translateX(0) rotate(0deg); }
-  25%  { transform: translateY(-8px) translateX(6px) rotate(2deg); }
-  50%  { transform: translateY(0) translateX(0) rotate(0deg); }
-  75%  { transform: translateY(-8px) translateX(-6px) rotate(-2deg); }
-  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+  0%{ transform: translateY(0) translateX(0) rotate(0deg); }
+  25%{ transform: translateY(-8px) translateX(6px) rotate(2deg); }
+  50%{ transform: translateY(0) translateX(0) rotate(0deg); }
+  75%{ transform: translateY(-8px) translateX(-6px) rotate(-2deg); }
+  100%{ transform: translateY(0) translateX(0) rotate(0deg); }
 }
 
-/* ✅ MOBILE / TOUCH: keep ALL bears, but scale down (no overlap) */
-@media (max-width: 900px), (pointer: coarse){
-  .media__img{ width: 155px; }
+/* ✅ MOBILE: better layout (reposition, not just scale) */
+@media (max-width: 520px){
+
+  .media__img{ width: 150px; }
   .title{ font-size: 21px; }
   .hint{ font-size: 14px; }
-  .bubble{ font-size: 12px; }
 
-  /* الأهم: صغّر طبقة الدباديب كلها */
-  .peekers{
-    transform: scale(.72);
-    transform-origin: center;
-  }
+  /* أصغر وألطف */
+  .peeker{ width: 210px; height: 170px; border-radius: 24px; }
 
-  /* صغّر كمان صناديق الدبكة تحت */
-  .dabke-bear{ width: 76px; height: 104px; }
+  /* الزوايا: خليهم إطار وما يقصّوا الكرت */
+  .peeker--tl{ top:-85px; left:-70px; }
+  .peeker--tl.peeker--b{ top:-55px; left: 80px; }
+
+  .peeker--tr{ top:-85px; right:-70px; }
+  .peeker--tr.peeker--b{ top:-55px; right: 80px; }
+
+  .peeker--bl{ bottom:-85px; left:-70px; }
+  .peeker--bl.peeker--b{ bottom:-55px; left: 80px; }
+
+  .peeker--br{ bottom:-85px; right:-70px; }
+  .peeker--br.peeker--b{ bottom:-55px; right: 80px; }
+
+  /* الأطراف: نحطهم بوسط الأطراف بس لبرا أكتر */
+  .peeker--left{ left:-150px; top: 43%; transform:translateY(-50%); }
+  .peeker--right{ right:-150px; top: 43%; transform:translateY(-50%); }
+
+  /* أهم شي: فوق/تحت بالنص ما عاد يكون دب عملاق يغطي الكرت */
+  .peeker--top{ top:-150px; left:50%; transform:translateX(-50%); }
+  .peeker--bottom{ bottom:-150px; left:50%; transform:translateX(-50%); }
+
+  /* خفّض حجم الدب داخل الصندوق شوي */
+  .bear{ width: 130%; height:130%; top:62%; }
+
+  /* زِد المسافة حول الكرت حتى ما يلامس */
+  .center{ padding-top: 36px; padding-bottom: 36px; }
 }
