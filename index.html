@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>فالنتاين 💕</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Cache bust -->
+  <link rel="stylesheet" href="style.css?v=7" />
+</head>
+
+<body class="page page--ask">
+
+  <div class="peekers" aria-hidden="true">
+    <div class="peeker peeker--tl peeker--a"><div class="bear" data-face="0"></div></div>
+    <div class="peeker peeker--tl peeker--b"><div class="bear" data-face="0"></div></div>
+
+    <div class="peeker peeker--tr peeker--a"><div class="bear" data-face="0"></div></div>
+    <div class="peeker peeker--tr peeker--b"><div class="bear" data-face="0"></div></div>
+
+    <div class="peeker peeker--bl peeker--a"><div class="bear" data-face="0"></div></div>
+    <div class="peeker peeker--bl peeker--b"><div class="bear" data-face="0"></div></div>
+
+    <div class="peeker peeker--br peeker--a"><div class="bear" data-face="0"></div></div>
+    <div class="peeker peeker--br peeker--b"><div class="bear" data-face="0"></div></div>
+
+    <div class="peeker peeker--left peeker--mid"><div class="bear" data-face="0"></div></div>
+    <div class="peeker peeker--right peeker--mid"><div class="bear" data-face="0"></div></div>
+    <div class="peeker peeker--top peeker--mid"><div class="bear" data-face="0"></div></div>
+    <div class="peeker peeker--bottom peeker--mid"><div class="bear" data-face="0"></div></div>
+  </div>
+
+  <main class="center">
+    <section class="card" role="group" aria-label="Valentine Card">
+      <div class="card__glow"></div>
+
+      <div class="media">
+        <img class="media__img" src="giphy.webp" alt="gif"
+             onerror="this.style.display='none'; document.getElementById('gifFallback').style.display='grid';"/>
+        <div id="gifFallback" class="media__fallback" style="display:none">
+          <div class="fallback__icon">💘</div>
+          <div class="fallback__text">حط الغيف باسم <b>giphy.webp</b> بنفس المجلد</div>
+        </div>
+      </div>
+
+      <h1 class="title">بدك تكوني الفالنتاين حقي؟ <span class="spark">💕</span></h1>
+      <p class="hint" id="hintText">لا تستفزّي الدباديب 😌</p>
+
+      <div class="buttons" id="btnArea">
+        <button class="btn btn--yes" id="yesBtn" type="button">اي 😍</button>
+        <button class="btn btn--no" id="noBtn" type="button">لا 😢</button>
+      </div>
+
+      <div class="fx" id="fxLayer" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/twemoji.min.js" crossorigin="anonymous"></script>
+
+  <!-- Cache bust -->
+  <script src="script.js?v=7"></script>
+</body>
+</html>
